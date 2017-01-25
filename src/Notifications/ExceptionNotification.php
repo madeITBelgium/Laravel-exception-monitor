@@ -6,7 +6,6 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackAttachment;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification as IlluminateNotification;
-use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Request;
 
 /**
@@ -18,7 +17,7 @@ use Illuminate\Support\Facades\Request;
  * @author     Made I.T. <info@madeit.be>
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */
-class Notification extends IlluminateNotification
+class ExceptionNotification extends IlluminateNotification
 {
     /** @var \Illuminate\Queue\Events\JobFailed */
     protected $exception;
@@ -41,6 +40,7 @@ class Notification extends IlluminateNotification
     public function setException(Exception $exception)
     {
         $this->exception = $exception;
+
         return $this;
     }
 
@@ -82,19 +82,18 @@ class Notification extends IlluminateNotification
      */
     public function toSlack()
     {
-        
         $fields = [
-            "Exception" => get_class($e),
-            "Hash" => ExceptionHelper::hash($e),
-            "Http code" => ExceptionHelper::statusCode($e),
-            "Code" => $e->getCode(),
-            "File" => $e->getFile(),
-            "Line" => $e->getLine(),
-            "Request url" => Request::url(),
-            "Request method" => Request::method(),
-            "Request param" => json_encode(Request::all()),
+            'Exception'      => get_class($e),
+            'Hash'           => ExceptionHelper::hash($e),
+            'Http code'      => ExceptionHelper::statusCode($e),
+            'Code'           => $e->getCode(),
+            'File'           => $e->getFile(),
+            'Line'           => $e->getLine(),
+            'Request url'    => Request::url(),
+            'Request method' => Request::method(),
+            'Request param'  => json_encode(Request::all()),
         ];
-        
+
         return (new SlackMessage())
             ->from(config('app.url'))
             ->error()
@@ -103,15 +102,15 @@ class Notification extends IlluminateNotification
                 $attachment->fields($fields);
             });
     }
-  
+
     /**
-     * Transform an exception to attachment array for slack post
+     * Transform an exception to attachment array for slack post.
      *
      * @param E $e
      *
      * @return array
      */
-    static protected function exceptionToSlackAttach(Exception $e)
+    protected static function exceptionToSlackAttach(Exception $e)
     {
     }
 }

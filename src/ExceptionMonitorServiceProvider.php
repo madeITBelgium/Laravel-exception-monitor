@@ -4,7 +4,7 @@ namespace MadeITBelgium\LaravelExceptionMonitor;
 
 use Illuminate\Support\ServiceProvider;
 
-/** 
+/**
  * Laravel Exception monitor.
  *
  * @version    1.0.0
