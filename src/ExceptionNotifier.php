@@ -2,8 +2,8 @@
 
 namespace MadeITBelgium\LaravelExceptionMonitor;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Exception;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 /**
  * Laravel Exception monitor.
@@ -22,7 +22,7 @@ class ExceptionNotifier extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        
+
     ];
 
     /**
@@ -30,24 +30,26 @@ class ExceptionNotifier extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param \Exception $e
+     *
      * @return void
      */
     public function report(Exception $e)
     {
         parent::report($e);
-        
+
         $notifiable = app(config('exception-monitor.notifiable.exception'));
         $notification = app(config('exception-monitor.notification.exception'))->setExcpetion($e);
 
         $notifiable->notify($notification);
     }
-    
+
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $exception
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)

@@ -6,11 +6,10 @@ use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Notification as NotificationFacade;
 use MadeITBelgium\LaravelExceptionMonitor\ExceptionMonitorServiceProvider;
 use MadeITBelgium\LaravelExceptionMonitor\Notifiable;
-use MadeITBelgium\LaravelExceptionMonitor\Notifications\ExceptionNotification;
 use MadeITBelgium\LaravelExceptionMonitor\Notifications\JobNotification;
 use MadeITBelgium\LaravelExceptionMonitor\Test\Dummy\Job;
-use MadeITBelgium\LaravelExceptionMonitor\Test\Dummy\NewNotifiable;
 use MadeITBelgium\LaravelExceptionMonitor\Test\Dummy\NewJobNotification;
+use MadeITBelgium\LaravelExceptionMonitor\Test\Dummy\NewNotifiable;
 use Orchestra\Testbench\TestCase;
 
 class FailedJobTest extends TestCase
@@ -30,6 +29,11 @@ class FailedJobTest extends TestCase
     public function getEnvironmentSetUp($app)
     {
         $app['config']->set('queue.default', 'sync');
+    }
+    
+    public function testNotifiable() {
+        $notifiable = new Notifiable;
+        $this->assertEquals($notifiable->routeNotificationForMail(), "email@example.com");
     }
 
     public function testSendNotificationWhenJobFailed()

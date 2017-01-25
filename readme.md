@@ -1,7 +1,13 @@
 # Laravel Exception Monitor
 [![Build Status](https://travis-ci.org/madeITBelgium/Laravel-exception-monitor.svg?branch=master)](https://travis-ci.org/madeITBelgium/Laravel-exception-monitor)
 [![Coverage Status](https://coveralls.io/repos/github/madeITBelgium/Laravel-exception-monitor/badge.svg?branch=master)](https://coveralls.io/github/madeITBelgium/Laravel-exception-monitor?branch=master)
-
+[![Latest Stable Version](https://poser.pugx.org/madeitbelgium/laravel-exception-monitor/v/stable)](https://packagist.org/packages/madeitbelgium/laravel-exception-monitor)
+[![Total Downloads](https://poser.pugx.org/madeitbelgium/laravel-exception-monitor/downloads)](https://packagist.org/packages/madeitbelgium/laravel-exception-monitor)
+[![Latest Unstable Version](https://poser.pugx.org/madeitbelgium/laravel-exception-monitor/v/unstable)](https://packagist.org/packages/madeitbelgium/laravel-exception-monitor)
+[![License](https://poser.pugx.org/madeitbelgium/laravel-exception-monitor/license)](https://packagist.org/packages/madeitbelgium/laravel-exception-monitor)
+[![Monthly Downloads](https://poser.pugx.org/madeitbelgium/laravel-exception-monitor/d/monthly)](https://packagist.org/packages/madeitbelgium/laravel-exception-monitor)
+[![Daily Downloads](https://poser.pugx.org/madeitbelgium/laravel-exception-monitor/d/daily)](https://packagist.org/packages/madeitbelgium/laravel-exception-monitor)
+[![composer.lock](https://poser.pugx.org/madeitbelgium/laravel-exception-monitor/composerlock)](https://packagist.org/packages/madeitbelgium/laravel-exception-monitor)
 
 #Installation
 
@@ -12,7 +18,7 @@ Require this package in your `composer.json` and update composer.
 ```
 
 ```php
-composer require spatie/laravel-exception-monitor
+composer require madeitbelgium/laravel-exception-monitor
 ```
 
 After updating composer, add the ServiceProvider to the providers array in `config/app.php`

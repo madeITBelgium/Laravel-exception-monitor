@@ -7,7 +7,7 @@ return [
      */
     'notification' => [
         'exception' => \MadeITBelgium\LaravelExceptionMonitor\Notifications\ExceptionNotification::class,
-        'job' => \MadeITBelgium\LaravelExceptionMonitor\Notifications\JobNotification::class,
+        'job'       => \MadeITBelgium\LaravelExceptionMonitor\Notifications\JobNotification::class,
     ],
 
     /*
@@ -17,7 +17,7 @@ return [
      */
     'notifiable' => [
         'exception' => \MadeITBelgium\LaravelExceptionMonitor\Notifiable::class,
-        'job' => \MadeITBelgium\LaravelExceptionMonitor\Notifiable::class,
+        'job'       => \MadeITBelgium\LaravelExceptionMonitor\Notifiable::class,
     ],
 
     /*
