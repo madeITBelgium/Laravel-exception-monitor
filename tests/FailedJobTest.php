@@ -30,10 +30,11 @@ class FailedJobTest extends TestCase
     {
         $app['config']->set('queue.default', 'sync');
     }
-    
-    public function testNotifiable() {
-        $notifiable = new Notifiable;
-        $this->assertEquals($notifiable->routeNotificationForMail(), "email@example.com");
+
+    public function testNotifiable()
+    {
+        $notifiable = new Notifiable();
+        $this->assertEquals($notifiable->routeNotificationForMail(), 'email@example.com');
     }
 
     public function testSendNotificationWhenJobFailed()
