@@ -32,6 +32,14 @@ You must publish the config file:
 php artisan vendor:publish --provider="MadeITBelgium\LaravelExceptionMonitor\ExceptionMonitorServiceProvider"
 
 ```
+Replace the extends class of /app/Exceptions/Handler.php
+
+```php
+use MadeITBelgium\LaravelExceptionMonitor\MonitorExceptionHandler;
+...
+class Handler extends MonitorExceptionHandler
+
+```
 
 # Documentation
 

@@ -16,13 +16,6 @@ use Illuminate\Support\ServiceProvider;
 class ExceptionMonitorServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * Bootstrap the application events.
      *
      * @return void
@@ -33,7 +26,6 @@ class ExceptionMonitorServiceProvider extends ServiceProvider
             __DIR__.'/../config/exception-monitor.php' => config_path('exception-monitor.php'),
         ], 'config');
 
-        //$this->app->make(ExceptionNotifier::class);
         $this->app->make(FailedJobNotifier::class)->register();
     }
 
@@ -48,7 +40,7 @@ class ExceptionMonitorServiceProvider extends ServiceProvider
             __DIR__.'/../config/exception-monitor.php',
             'exception-monitor'
         );
-        //$this->app->singleton(ExceptionNotifier::class);
+        
         $this->app->singleton(FailedJobNotifier::class);
     }
 }
