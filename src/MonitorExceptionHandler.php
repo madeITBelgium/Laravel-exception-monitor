@@ -36,7 +36,7 @@ class MonitorExceptionHandler extends ExceptionHandler
         $notification = app(config('exception-monitor.notification.exception'))->setException($e);
 
         $notifiable->notify($notification);
-        
+
         parent::report($e);
     }
 }

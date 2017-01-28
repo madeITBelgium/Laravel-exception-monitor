@@ -40,7 +40,7 @@ class ExceptionMonitorServiceProvider extends ServiceProvider
             __DIR__.'/../config/exception-monitor.php',
             'exception-monitor'
         );
-        
+
         $this->app->singleton(FailedJobNotifier::class);
     }
 }
