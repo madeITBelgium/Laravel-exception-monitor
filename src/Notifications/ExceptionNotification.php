@@ -62,6 +62,7 @@ class ExceptionNotification extends IlluminateNotification
     public function toMail($notifiable)
     {
         $e = $this->exception;
+
         return (new MailMessage())
             ->error()
             ->subject('An exception was thrown at '.config('app.url'))
