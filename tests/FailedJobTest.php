@@ -32,32 +32,32 @@ class FailedJobTest extends TestCase
         $app['config']->set('exception-monitor.mail.to', 'email@example.com');
     }
 
-    /*
+    
     public function testNotifiable() {
         $notifiable = new Notifiable;
         $this->assertEquals($notifiable->routeNotificationForMail(), "email@example.com");
     }
-
+    
     public function testSendNotificationWhenJobFailed()
     {
         $this->fireFailedEvent();
         NotificationFacade::assertSentTo(new Notifiable(), JobNotification::class);
     }
-
+    
     public function testSendNotificationWhenJobFailedtoNewNotifiable()
     {
         $this->app['config']->set('exception-monitor.notifiable.job', NewNotifiable::class);
         $this->fireFailedEvent();
         NotificationFacade::assertSentTo(new NewNotifiable(), JobNotification::class);
     }
-
+    
     public function testSendNotificationWhenJobFailedtoNewNotification()
     {
         $this->app['config']->set('exception-monitor.notification.job', NewJobNotification::class);
         $this->fireFailedEvent();
         NotificationFacade::assertSentTo(new Notifiable(), NewJobNotification::class);
     }
-    */
+    
 
     protected function fireFailedEvent()
     {
