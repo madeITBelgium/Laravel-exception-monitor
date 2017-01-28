@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Request;
  */
 class ExceptionNotification extends IlluminateNotification
 {
-    /** @var \Illuminate\Queue\Events\JobFailed */
+    /** @var \Exception */
     protected $exception;
 
     /**
@@ -29,7 +29,7 @@ class ExceptionNotification extends IlluminateNotification
      */
     public function via($notifiable)
     {
-        return config('laravel-failed-job-monitor.channels');
+        return config('exception-monitor.channels');
     }
 
     /**
@@ -61,12 +61,13 @@ class ExceptionNotification extends IlluminateNotification
      */
     public function toMail($notifiable)
     {
+        $e = $this->exception;
         return (new MailMessage())
             ->error()
             ->subject('An exception was thrown at '.config('app.url'))
             ->line('Exception message: '.$e->getMessage())
-            ->line('Hash: '.ExceptionHelper::hash($e))
-            ->line('Http code: '.ExceptionHelper::statusCode($e))
+          //  ->line('Hash: '.ExceptionHelper::hash($e))
+          //  ->line('Http code: '.ExceptionHelper::statusCode($e))
             ->line('Code: '.$e->getCode())
             ->line('File: '.$e->getFile())
             ->line('Line: '.$e->getLine())
@@ -82,10 +83,11 @@ class ExceptionNotification extends IlluminateNotification
      */
     public function toSlack()
     {
+        $e = $this->exception;
         $fields = [
             'Exception'      => get_class($e),
-            'Hash'           => ExceptionHelper::hash($e),
-            'Http code'      => ExceptionHelper::statusCode($e),
+          //  'Hash'           => ExceptionHelper::hash($e),
+          //  'Http code'      => ExceptionHelper::statusCode($e),
             'Code'           => $e->getCode(),
             'File'           => $e->getFile(),
             'Line'           => $e->getLine(),
@@ -98,19 +100,8 @@ class ExceptionNotification extends IlluminateNotification
             ->from(config('app.url'))
             ->error()
             ->content($e->getMessage())
-            ->attachment(function (SlackAttachment $attachment) {
+            ->attachment(function (SlackAttachment $attachment) use ($fields) {
                 $attachment->fields($fields);
             });
-    }
-
-    /**
-     * Transform an exception to attachment array for slack post.
-     *
-     * @param E $e
-     *
-     * @return array
-     */
-    protected static function exceptionToSlackAttach(Exception $e)
-    {
     }
 }
