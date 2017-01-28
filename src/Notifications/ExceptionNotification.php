@@ -37,7 +37,7 @@ class ExceptionNotification extends IlluminateNotification
      *
      * @return self
      */
-    public function setException(Exception $exception)
+    public function setException($exception)
     {
         $this->exception = $exception;
 
