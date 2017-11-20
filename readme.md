@@ -16,7 +16,7 @@ Require this package in your `composer.json` and update composer.
 ```php
 "madeitbelgium/laravel-exception-monitor": "~1.*"
 ```
-
+https://github.com/GrahamCampbell/Laravel-Exceptions
 ```php
 composer require madeitbelgium/laravel-exception-monitor
 ```
