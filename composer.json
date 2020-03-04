@@ -1,6 +1,6 @@
 {
   "name": "madeitbelgium/laravel-exception-monitor",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Laravel exception monitor",
   "keywords": ["Laravel", "laravel exception", "monitor", "laravel monitor", "slack"],
   "homepage": "http://www.madeit.be",
@@ -17,7 +17,7 @@
     "php": ">=5.6",
     "illuminate/contracts": "5.*|^6.0|^7.0",
     "illuminate/queue": "5.*|^6.0|^7.0",
-    "illuminate/notifications": "5.*|^6.0|^7.°",
+    "illuminate/notifications": "5.*|^6.0|^7.0",
     "illuminate/support": "5.*|^6.0|^7.0",
     "guzzlehttp/guzzle": "6.*|7.*",
     "laravel/slack-notification-channel": "^2.0"
