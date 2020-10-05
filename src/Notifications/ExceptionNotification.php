@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Request;
  */
 class ExceptionNotification extends IlluminateNotification
 {
-    /** @var \Exception */
+    /** @var \Throwable */
     protected $exception;
 
     /**
