@@ -87,8 +87,8 @@ class ExceptionNotification extends IlluminateNotification
         $e = $this->exception;
         $fields = [
             'Exception'      => get_class($e),
-          //  'Hash'           => ExceptionHelper::hash($e),
-          //  'Http code'      => ExceptionHelper::statusCode($e),
+            //  'Hash'           => ExceptionHelper::hash($e),
+            //  'Http code'      => ExceptionHelper::statusCode($e),
             'Code'           => $e->getCode(),
             'File'           => $e->getFile(),
             'Line'           => $e->getLine(),

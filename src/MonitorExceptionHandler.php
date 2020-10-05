@@ -2,8 +2,8 @@
 
 namespace MadeITBelgium\LaravelExceptionMonitor;
 
-use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
 
 /**
  * Laravel Exception monitor.
