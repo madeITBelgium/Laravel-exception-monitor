@@ -2,7 +2,7 @@
 
 namespace MadeITBelgium\LaravelExceptionMonitor;
 
-use Exception;
+use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 /**
@@ -21,11 +21,11 @@ class MonitorExceptionHandler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param \Exception $e
+     * @param \Throwable $e
      *
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Throwable $e)
     {
         foreach ($this->dontReport as $type) {
             if ($e instanceof $type) {
